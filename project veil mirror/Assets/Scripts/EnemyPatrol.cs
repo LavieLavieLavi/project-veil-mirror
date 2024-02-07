@@ -35,6 +35,12 @@ public class EnemyPatrol : MonoBehaviour
 
     private void Update()
     {
+        if (anim == null && enemy == null) {
+            Destroy(gameObject);
+        }
+
+           
+
         if (movingLeft)
         {
             if (enemy.position.x >= leftEdge.position.x)

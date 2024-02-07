@@ -27,6 +27,7 @@ public class Projectile : MonoBehaviour
         }
   
 
+        //For vengeful
         if (collision.gameObject.tag == "Enemy")
         {
             GameObject cloneimpact = Instantiate(impactEffect, transform.position, transform.rotation);
@@ -34,6 +35,7 @@ public class Projectile : MonoBehaviour
             Destroy(gameObject);
             Destroy(cloneimpact, .5f);
         }
+
 
         if (collision.gameObject.tag == "PossessiveEnemy")
         {
@@ -44,6 +46,13 @@ public class Projectile : MonoBehaviour
         }
 
 
+        if (collision.gameObject.tag == "MalevolentEnemy")
+        {
+            GameObject cloneimpact = Instantiate(impactEffect, transform.position, transform.rotation);
+            collision.gameObject.GetComponent<MalevolentHealth>().TakeDamage(projectileDamage);
+            Destroy(gameObject);
+            Destroy(cloneimpact, .5f);
+        }
 
 
     }
