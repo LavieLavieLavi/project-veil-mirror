@@ -36,7 +36,7 @@ public class HarperHealth : MonoBehaviour
     //
     public void harperHurt(int Damage)
     {
-        move.SetHurt();
+        //move.SetHurt();
         Debug.Log("Harper Took damage");
         harperCurrentHealth -= Damage;
     }

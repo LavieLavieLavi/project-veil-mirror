@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 4966755472716208709}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.917, y: 0.02, z: 0}
+  m_LocalPosition: {x: 1.83, y: 0.02, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: 7323361250474141374}
   - component: {fileID: 2205543881725707688}
   - component: {fileID: 9039853610515538224}
+  - component: {fileID: -1274050880424804118}
   - component: {fileID: 8053595715212126135}
   m_Layer: 0
   m_Name: Harper
@@ -203,18 +204,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.02515167}
+  m_Offset: {x: -0.014047325, y: -0.035687268}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 3, y: 3}
+    oldSize: {x: 6, y: 6}
     newSize: {x: 3, y: 3}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.5162668, y: 1.0227658}
+  m_Size: {x: 1.0219711, y: 1.9709615}
   m_EdgeRadius: 0
 --- !u!114 &2205543881725707688
 MonoBehaviour:
@@ -268,6 +269,23 @@ MonoBehaviour:
   compressRotation: 0
   positionPrecision: 0.01
   scalePrecision: 0.01
+--- !u!114 &-1274050880424804118
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6229459751836280664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f6f3bf89aa97405989c802ba270f815, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncDirection: 1
+  syncMode: 0
+  syncInterval: 0
+  clientAuthority: 1
+  animator: {fileID: 6806794667721439132}
 --- !u!114 &8053595715212126135
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -285,7 +303,7 @@ MonoBehaviour:
   syncInterval: 0
   movementSpeed: 5
   feetPos: {fileID: 5704375298540283002}
-  checkRadius: 0
+  checkRadius: 0.27
   isGrounded: 1
   groundLayer:
     serializedVersion: 2
@@ -319,7 +337,7 @@ Transform:
   m_GameObject: {fileID: 8179285242778954960}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.498, z: 0}
+  m_LocalPosition: {x: 0, y: -0.99, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
