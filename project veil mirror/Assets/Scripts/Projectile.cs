@@ -17,17 +17,35 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if(collision.gameObject.tag == "Ground")
+        {
+            GameObject cloneimpact = Instantiate(impactEffect, transform.position, transform.rotation);
+            Destroy(gameObject);
+            Destroy(cloneimpact, .5f);
+            Debug.Log(collision.name);
+
+        }
+  
+
         if (collision.gameObject.tag == "Enemy")
         {
+            GameObject cloneimpact = Instantiate(impactEffect, transform.position, transform.rotation);
             collision.gameObject.GetComponent<EnemiesHealth>().enemyTakeDamage(projectileDamage);
+            Destroy(gameObject);
+            Destroy(cloneimpact, .5f);
         }
 
-        GameObject cloneimpact = Instantiate(impactEffect, transform.position, transform.rotation);
-        Destroy(gameObject); 
-        Destroy(cloneimpact,.5f);
-       // Debug.Log(collision.name);
+        if (collision.gameObject.tag == "PossessiveEnemy")
+        {
+            GameObject cloneimpact = Instantiate(impactEffect, transform.position, transform.rotation);
+            collision.gameObject.GetComponent<PossessiveHealth>().TakeDamage(projectileDamage);
+            Destroy(gameObject);
+            Destroy(cloneimpact, .5f);
+        }
 
-        
+
+
+
     }
     
     //TODO::Add player damage too

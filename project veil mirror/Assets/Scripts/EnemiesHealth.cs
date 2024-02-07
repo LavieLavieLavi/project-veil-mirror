@@ -5,10 +5,14 @@ using UnityEngine;
 public class EnemiesHealth : MonoBehaviour
 {
     public int enemyHealth;
-    private int enemyCurrentHealth;
-    private VengefulShoot vengefulShoot;
+    [SerializeField]private int enemyCurrentHealth;
+    private VengefulShoot vengefulShoot; // get reference to disable when vengeful is dead.
+
+
     //Components
     Animator anim;
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -18,24 +22,29 @@ public class EnemiesHealth : MonoBehaviour
         vengefulShoot = GetComponent<VengefulShoot>();  
     }
 
-    // Update is called once per frame
+
+
+
     void Update()
     {
+        
+        //Dying logic
         if (enemyCurrentHealth <= 0)
         {
             //death logic here
             //play death animation
             anim.Play("Vengeful Death");
-            vengefulShoot.enabled = false;  
+            vengefulShoot.enabled = false;
             Destroy(gameObject, 1f);
         }
     }
 
+
+    //Taking Damage
     public void enemyTakeDamage(int Damage)
     {
         anim.Play("Vengeful Hurt");
         enemyCurrentHealth -= Damage;
     }
-
 
 }

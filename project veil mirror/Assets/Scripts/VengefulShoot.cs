@@ -15,12 +15,16 @@ public class VengefulShoot : MonoBehaviour
     const string VENGEFUL_IDLE = "Vengeful Idle";
     const string VENGEFUL_ATK = "Vengeful Attack";
 
+
     // Start is called before the first frame update
     void Start()
     {
         anim = GetComponent<Animator>();
         StartCoroutine(AttackRoutine());
+      
     }
+
+   //TODO:: Fix facing direction if i have time and fuk this shit im tired
 
     // Coroutine to handle attacking
     IEnumerator AttackRoutine()
