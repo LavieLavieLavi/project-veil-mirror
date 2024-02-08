@@ -20,6 +20,7 @@ public class MalevolentHealth : NetworkBehaviour
     [Header("Components")]
     [SerializeField] private Behaviour[] components;
     private bool invulnerable;
+    [SerializeField]private EnemyPatrol enemypatrol;
 
     [SyncVar]
     bool hasAddedScore = false; // Flag to track if score has been added
@@ -29,6 +30,7 @@ public class MalevolentHealth : NetworkBehaviour
         currentHealth = startingHealth;
         anim = GetComponent<Animator>();
         spriteRend = GetComponent<SpriteRenderer>();
+        enemypatrol = GetComponentInParent<EnemyPatrol>();
     }
 
     private void Update()
@@ -62,7 +64,9 @@ public class MalevolentHealth : NetworkBehaviour
 
                 dead = true;
                 AddScore(100);
-                Destroy(gameObject, 2f);
+                enemypatrol.DestroyGameObject();
+                Destroy(gameObject);
+                
             }
         }
     }

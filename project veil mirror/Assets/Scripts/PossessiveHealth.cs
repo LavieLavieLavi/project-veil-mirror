@@ -20,6 +20,7 @@ public class PossessiveHealth : NetworkBehaviour
     [Header("Components")]
     [SerializeField] private Behaviour[] components;
     private bool invulnerable;
+    [SerializeField]private EnemyPatrol enemypatrol;
 
     [SyncVar]
     bool hasAddedScore = false; // Flag to track if score has been added
@@ -29,6 +30,7 @@ public class PossessiveHealth : NetworkBehaviour
         currentHealth = startingHealth;
         anim = GetComponent<Animator>();
         spriteRend = GetComponent<SpriteRenderer>();
+        enemypatrol = GetComponentInParent<EnemyPatrol>();
     }
 
     private void Update()
@@ -62,6 +64,7 @@ public class PossessiveHealth : NetworkBehaviour
 
                 dead = true;
                 AddScore(25);
+                enemypatrol.DestroyGameObject();
                 Destroy(gameObject,2f);
             }
         }

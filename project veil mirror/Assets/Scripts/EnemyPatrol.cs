@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
 
@@ -24,23 +22,21 @@ public class EnemyPatrol : NetworkBehaviour
     //Components
     [SerializeField] private Animator anim;
 
-
     private void Awake()
     {
         initialScale = enemy.localScale;
     }
+
     private void OnDisable()
     {
-        anim.SetBool("moving", false);
+        if (anim != null)
+            anim.SetBool("moving", false);
     }
 
     private void Update()
     {
-        if (anim == null && enemy == null) {
-            Destroy(gameObject);
-        }
-
-           
+        if (anim == null || enemy == null)
+            return;
 
         if (movingLeft)
         {
@@ -53,7 +49,7 @@ public class EnemyPatrol : NetworkBehaviour
                 //change dir
                 DirectionChange();
             }
-            
+
         }
         else
         {
@@ -66,34 +62,41 @@ public class EnemyPatrol : NetworkBehaviour
                 //change dir
                 DirectionChange();
             }
-                
         }
-  
     }
 
     private void DirectionChange()
     {
-        anim.SetBool("moving", false);
+        if (anim != null)
+            anim.SetBool("moving", false);
 
         idleTimer += Time.deltaTime;
 
-        if(idleTimer> idleDuration)
-            movingLeft =  !movingLeft;
-
+        if (idleTimer > idleDuration)
+            movingLeft = !movingLeft;
     }
 
     private void MovetowardsDirection(int _direction)
     {
         idleTimer = 0;
-        anim.SetBool("moving", true);
+        if (anim != null)
+            anim.SetBool("moving", true);
+
         //Make enemy face direction
-        enemy.localScale = new Vector3(Mathf.Abs(initialScale.x) * _direction,
-            initialScale.y, initialScale.z);
+        if (enemy != null)
+        {
+            enemy.localScale = new Vector3(Mathf.Abs(initialScale.x) * _direction,
+                initialScale.y, initialScale.z);
 
-
-        //Move in that direction
-        enemy.position = new Vector3(enemy.position.x + Time.deltaTime * _direction * enemySpeed, enemy.position.y, enemy.position.z);
+            //Move in that direction
+            enemy.position = new Vector3(enemy.position.x + Time.deltaTime * _direction * enemySpeed, enemy.position.y, enemy.position.z);
+        }
     }
 
-   
+    // Method to destroy the GameObject containing this script
+    public void DestroyGameObject()
+    {
+        // Destroy this GameObject
+        Destroy(gameObject);
+    }
 }

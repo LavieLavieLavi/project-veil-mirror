@@ -300,7 +300,7 @@ MonoBehaviour:
   syncDirection: 0
   syncMode: 0
   syncInterval: 0
-  harperHealth: 100
+  harperHealth: 250
 --- !u!1 &5734039367811424628
 GameObject:
   m_ObjectHideFlags: 0
@@ -342,7 +342,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2735867824145674390}
   - component: {fileID: 6396312493962202493}
-  - component: {fileID: 6945956655694670172}
   - component: {fileID: 1543826632264571025}
   m_Layer: 0
   m_Name: Camera
@@ -417,14 +416,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &6945956655694670172
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7001244865511630736}
-  m_Enabled: 1
 --- !u!114 &1543826632264571025
 MonoBehaviour:
   m_ObjectHideFlags: 0
