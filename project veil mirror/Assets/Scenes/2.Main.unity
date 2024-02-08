@@ -99490,7 +99490,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 0, y: 202}
+  m_AnchoredPosition: {x: 0, y: 4}
   m_SizeDelta: {x: 0, y: 93.369995}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &1903152419
@@ -99615,6 +99615,34 @@ PrefabInstance:
       propertyPath: networkAddress
       value: 192.168.1.30
       objectReference: {fileID: 0}
+    - target: {fileID: 418280125472194239, guid: 58bb3e4aa226d294f9b3dff6c95d528e, type: 3}
+      propertyPath: spawnPrefabs.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 418280125472194239, guid: 58bb3e4aa226d294f9b3dff6c95d528e, type: 3}
+      propertyPath: spawnPrefabs.Array.data[1]
+      value: 
+      objectReference: {fileID: 3649163592585044133, guid: 67ef0e54b2e4ff640b524aefb06a8eff, type: 3}
+    - target: {fileID: 418280125472194239, guid: 58bb3e4aa226d294f9b3dff6c95d528e, type: 3}
+      propertyPath: spawnPrefabs.Array.data[2]
+      value: 
+      objectReference: {fileID: 1040582574695737207, guid: 80896742a8cd3d74b8ca1541f67eb103, type: 3}
+    - target: {fileID: 418280125472194239, guid: 58bb3e4aa226d294f9b3dff6c95d528e, type: 3}
+      propertyPath: spawnPrefabs.Array.data[3]
+      value: 
+      objectReference: {fileID: 1813651039147567492, guid: df4a1b3f2b902184cafbd913ed6ea9bd, type: 3}
+    - target: {fileID: 418280125472194239, guid: 58bb3e4aa226d294f9b3dff6c95d528e, type: 3}
+      propertyPath: spawnPrefabs.Array.data[4]
+      value: 
+      objectReference: {fileID: 1617843067750148486, guid: 4bd0ff2b38b8a5342a9a784cc6f4b3c5, type: 3}
+    - target: {fileID: 418280125472194239, guid: 58bb3e4aa226d294f9b3dff6c95d528e, type: 3}
+      propertyPath: spawnPrefabs.Array.data[5]
+      value: 
+      objectReference: {fileID: 903177293837607050, guid: 43dadd885060fd0499aca13a4561d7d4, type: 3}
+    - target: {fileID: 418280125472194239, guid: 58bb3e4aa226d294f9b3dff6c95d528e, type: 3}
+      propertyPath: spawnPrefabs.Array.data[6]
+      value: 
+      objectReference: {fileID: 3773786449943472568, guid: c17cffcc6d6ea9046963bbe59ba6e901, type: 3}
     - target: {fileID: 1446814683617687648, guid: 58bb3e4aa226d294f9b3dff6c95d528e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.1736948

@@ -144,6 +144,67 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3c59fa650df09242b23d610aee0c4dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1001 &637375093
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1040582574695737207, guid: 80896742a8cd3d74b8ca1541f67eb103, type: 3}
+      propertyPath: m_Name
+      value: Vengeful Spirit - Final (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1388770163489741676, guid: 80896742a8cd3d74b8ca1541f67eb103, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 5.12407
+      objectReference: {fileID: 0}
+    - target: {fileID: 1388770163489741676, guid: 80896742a8cd3d74b8ca1541f67eb103, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.0020235
+      objectReference: {fileID: 0}
+    - target: {fileID: 1388770163489741676, guid: 80896742a8cd3d74b8ca1541f67eb103, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1388770163489741676, guid: 80896742a8cd3d74b8ca1541f67eb103, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1388770163489741676, guid: 80896742a8cd3d74b8ca1541f67eb103, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1388770163489741676, guid: 80896742a8cd3d74b8ca1541f67eb103, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1388770163489741676, guid: 80896742a8cd3d74b8ca1541f67eb103, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1388770163489741676, guid: 80896742a8cd3d74b8ca1541f67eb103, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1388770163489741676, guid: 80896742a8cd3d74b8ca1541f67eb103, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1388770163489741676, guid: 80896742a8cd3d74b8ca1541f67eb103, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1887457184296325401, guid: 80896742a8cd3d74b8ca1541f67eb103, type: 3}
+      propertyPath: sceneId
+      value: 3030555399
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 80896742a8cd3d74b8ca1541f67eb103, type: 3}
 --- !u!1001 &672842374
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -474,6 +535,67 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1569883388
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1617843067750148486, guid: 4bd0ff2b38b8a5342a9a784cc6f4b3c5, type: 3}
+      propertyPath: m_Name
+      value: EnemyPatrolling Possessive Spirit (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1978973272900380563, guid: 4bd0ff2b38b8a5342a9a784cc6f4b3c5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 4.131319
+      objectReference: {fileID: 0}
+    - target: {fileID: 1978973272900380563, guid: 4bd0ff2b38b8a5342a9a784cc6f4b3c5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.7814112
+      objectReference: {fileID: 0}
+    - target: {fileID: 1978973272900380563, guid: 4bd0ff2b38b8a5342a9a784cc6f4b3c5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.040474355
+      objectReference: {fileID: 0}
+    - target: {fileID: 1978973272900380563, guid: 4bd0ff2b38b8a5342a9a784cc6f4b3c5, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1978973272900380563, guid: 4bd0ff2b38b8a5342a9a784cc6f4b3c5, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1978973272900380563, guid: 4bd0ff2b38b8a5342a9a784cc6f4b3c5, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1978973272900380563, guid: 4bd0ff2b38b8a5342a9a784cc6f4b3c5, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1978973272900380563, guid: 4bd0ff2b38b8a5342a9a784cc6f4b3c5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1978973272900380563, guid: 4bd0ff2b38b8a5342a9a784cc6f4b3c5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1978973272900380563, guid: 4bd0ff2b38b8a5342a9a784cc6f4b3c5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8231727191126391966, guid: 4bd0ff2b38b8a5342a9a784cc6f4b3c5, type: 3}
+      propertyPath: sceneId
+      value: 138455539
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4bd0ff2b38b8a5342a9a784cc6f4b3c5, type: 3}
 --- !u!1 &1971354499
 GameObject:
   m_ObjectHideFlags: 0
@@ -879,3 +1001,5 @@ SceneRoots:
   - {fileID: 3013168531586088827}
   - {fileID: 793415335}
   - {fileID: 672842374}
+  - {fileID: 637375093}
+  - {fileID: 1569883388}
