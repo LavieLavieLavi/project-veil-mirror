@@ -37,5 +37,12 @@ public class VengefulProjectileScript : MonoBehaviour
             Destroy(cloneimpact, .5f);
         }
 
+        if (collision.gameObject.tag == "HarperProjectile")
+        {
+            GameObject cloneimpact = Instantiate(vengeimpactEffect, transform.position, transform.rotation);
+            Destroy(gameObject);
+            Destroy(cloneimpact, .5f);
+        }
+
     }
 }

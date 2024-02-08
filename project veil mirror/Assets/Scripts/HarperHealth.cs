@@ -1,45 +1,55 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using Mirror;
 
-public class HarperHealth : MonoBehaviour
+public class HarperHealth : NetworkBehaviour
 {
-    public int harperHealth;
-    private int harperCurrentHealth;
+    [SyncVar(hook = nameof(OnHealthChanged))]
+    public int harperHealth = 100; // Starting health
 
     private Animator anim;
-
-
     private MovementPrototyping move;
 
-    // Start is called before the first frame update
     void Start()
     {
-        harperCurrentHealth = harperHealth;
         anim = GetComponent<Animator>();
-        move = GetComponent<MovementPrototyping>(); 
+        move = GetComponent<MovementPrototyping>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (harperCurrentHealth <= 0)
+        if (!isLocalPlayer)
+            return;
+
+        if (harperHealth <= 0)
         {
             anim.Play("Harper Death");
-          
             move.enabled = false;
-            Destroy(gameObject, 2f);
+
+            // Call the RpcGameOver method to trigger game over on all clients
+            RpcGameOver();
         }
     }
-   
-    
-    //
-    public void harperHurt(int Damage)
+
+    public void harperHurt(int damage)
     {
-        //move.SetHurt();
-        Debug.Log("Harper Took damage");
-        harperCurrentHealth -= Damage;
+        if (!isServer)
+            return;
+
+        harperHealth -= damage;
+        if (harperHealth < 0)
+            harperHealth = 0;
     }
 
-  
+    void OnHealthChanged(int oldHealth, int newHealth)
+    {
+        // This method is called whenever the health changes across the network
+        // You can use it to update UI, play effects, etc.
+    }
+
+    [ClientRpc]
+    void RpcGameOver()
+    {
+        // Call the gameOver method on the local player's GameOverMenu
+        FindObjectOfType<GameOverMenu>().gameOver();
+    }
 }

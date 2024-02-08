@@ -1,10 +1,12 @@
+using Mirror;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MalevolentHealth : MonoBehaviour
+public class MalevolentHealth : NetworkBehaviour
 {
     [Header("Health")]
+    [SyncVar]
     [SerializeField] private float startingHealth;
     public float currentHealth { get; private set; }
     private Animator anim;
@@ -19,6 +21,8 @@ public class MalevolentHealth : MonoBehaviour
     [SerializeField] private Behaviour[] components;
     private bool invulnerable;
 
+    [SyncVar]
+    bool hasAddedScore = false; // Flag to track if score has been added
 
     private void Awake()
     {
@@ -26,8 +30,18 @@ public class MalevolentHealth : MonoBehaviour
         anim = GetComponent<Animator>();
         spriteRend = GetComponent<SpriteRenderer>();
     }
+
+    private void Update()
+    {
+        if (!isServer)
+            return;
+    }
+
     public void TakeDamage(float _damage)
     {
+        if (!isServer)
+            return;
+
         if (invulnerable) return;
         currentHealth = Mathf.Clamp(currentHealth - _damage, 0, startingHealth);
 
@@ -47,6 +61,7 @@ public class MalevolentHealth : MonoBehaviour
                     component.enabled = false;
 
                 dead = true;
+                AddScore(100);
                 Destroy(gameObject, 2f);
             }
         }
@@ -65,5 +80,15 @@ public class MalevolentHealth : MonoBehaviour
         }
         Physics2D.IgnoreLayerCollision(10, 11, false);
         invulnerable = false;
+    }
+
+    void AddScore(int scoreIncrement)
+    {
+        ScoreCounter scoreCounter = FindObjectOfType<ScoreCounter>();
+        if (scoreCounter != null)
+        {
+            scoreCounter.scoreValue += scoreIncrement;
+            Debug.Log("Added " + scoreIncrement + " points!");
+        }
     }
 }

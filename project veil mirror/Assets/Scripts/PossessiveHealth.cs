@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Mirror;
 
-public class PossessiveHealth : MonoBehaviour
+public class PossessiveHealth : NetworkBehaviour
 {
     [Header("Health")]
+    [SyncVar]
     [SerializeField] private float startingHealth;
     public float currentHealth { get; private set; }
     private Animator anim;
@@ -19,6 +21,8 @@ public class PossessiveHealth : MonoBehaviour
     [SerializeField] private Behaviour[] components;
     private bool invulnerable;
 
+    [SyncVar]
+    bool hasAddedScore = false; // Flag to track if score has been added
 
     private void Awake()
     {
@@ -26,8 +30,18 @@ public class PossessiveHealth : MonoBehaviour
         anim = GetComponent<Animator>();
         spriteRend = GetComponent<SpriteRenderer>();
     }
+
+    private void Update()
+    {
+        if (!isServer)
+            return;
+    }
+
     public void TakeDamage(float _damage)
     {
+        if (!isServer)
+            return;
+
         if (invulnerable) return;
         currentHealth = Mathf.Clamp(currentHealth - _damage, 0, startingHealth);
 
@@ -47,6 +61,7 @@ public class PossessiveHealth : MonoBehaviour
                     component.enabled = false;
 
                 dead = true;
+                AddScore(25);
                 Destroy(gameObject,2f);
             }
         }
@@ -65,5 +80,15 @@ public class PossessiveHealth : MonoBehaviour
         }
         Physics2D.IgnoreLayerCollision(10, 11, false);
         invulnerable = false;
+    }
+
+    void AddScore(int scoreIncrement)
+    {
+        ScoreCounter scoreCounter = FindObjectOfType<ScoreCounter>();
+        if (scoreCounter != null)
+        {
+            scoreCounter.scoreValue += scoreIncrement;
+            Debug.Log("Added " + scoreIncrement + " points!");
+        }
     }
 }

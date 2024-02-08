@@ -1,50 +1,57 @@
-using System.Collections;
-using System.Collections.Generic;
+using Mirror;
 using UnityEngine;
 
-public class EnemiesHealth : MonoBehaviour
+public class EnemiesHealth : NetworkBehaviour
 {
-    public int enemyHealth;
-    [SerializeField]private int enemyCurrentHealth;
-    private VengefulShoot vengefulShoot; // get reference to disable when vengeful is dead.
+    [SyncVar]
+    public int enemyHealth = 100; // Initial health
 
-
-    //Components
+    int enemyCurrentHealth;
     Animator anim;
+    VengefulShoot vengefulShoot;
 
+    [SyncVar]
+    bool hasAddedScore = false; // Flag to track if score has been added
 
-
-    // Start is called before the first frame update
     void Start()
     {
         anim = GetComponent<Animator>();
         enemyCurrentHealth = enemyHealth;
-        vengefulShoot = GetComponent<VengefulShoot>();  
+        vengefulShoot = GetComponent<VengefulShoot>();
     }
-
-
-
 
     void Update()
     {
-        
-        //Dying logic
-        if (enemyCurrentHealth <= 0)
+        if (!isServer)
+            return;
+
+        if (enemyCurrentHealth <= 0 && !hasAddedScore)
         {
-            //death logic here
-            //play death animation
+            // Death logic here
             anim.Play("Vengeful Death");
             vengefulShoot.enabled = false;
             Destroy(gameObject, 1f);
+            AddScore(50); // You can pass score increment as an argument
+            hasAddedScore = true; // Set the flag to true after adding score
         }
     }
 
-
-    //Taking Damage
-    public void enemyTakeDamage(int Damage)
+    public void enemyTakeDamage(int damage)
     {
+        if (!isServer)
+            return;
+
         anim.Play("Vengeful Hurt");
-        enemyCurrentHealth -= Damage;
+        enemyCurrentHealth -= damage;
     }
 
+    void AddScore(int scoreIncrement)
+    {
+        ScoreCounter scoreCounter = FindObjectOfType<ScoreCounter>();
+        if (scoreCounter != null)
+        {
+            scoreCounter.scoreValue += scoreIncrement;
+            Debug.Log("Added " + scoreIncrement + " points!");
+        }
+    }
 }

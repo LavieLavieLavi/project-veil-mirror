@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Mirror;
 
-public class EnemyPatrol : MonoBehaviour
+public class EnemyPatrol : NetworkBehaviour
 {
     [Header("Patrol Points")]
     [SerializeField] private Transform leftEdge;

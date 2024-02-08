@@ -36,6 +36,14 @@ public class Projectile : MonoBehaviour
             Destroy(cloneimpact, .5f);
         }
 
+        //For vengeful
+        if (collision.gameObject.tag == "VengefulProjectile")
+        {
+            GameObject cloneimpact = Instantiate(impactEffect, transform.position, transform.rotation);
+            Destroy(gameObject);
+            Destroy(cloneimpact, .5f);
+        }
+
 
         if (collision.gameObject.tag == "PossessiveEnemy")
         {

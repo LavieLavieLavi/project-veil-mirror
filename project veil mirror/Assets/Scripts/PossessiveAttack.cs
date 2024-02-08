@@ -4,81 +4,62 @@ using UnityEngine;
 
 public class PossessiveAttack : MonoBehaviour
 {
-    [Header("Attack Parameters")]
-    [SerializeField] private float attackCooldown;
-    [SerializeField] private float range;
-    [SerializeField] private int damage;
+    public GameObject vengefulProjectile;
+    public Transform projectilePos;
 
-    [Header("Ranged Attack")]
-    [SerializeField] private Transform firepoint;
-    [SerializeField] private GameObject[] fireballs;
+    public float attackInterval = 2f;
+    public float projectileDelay = 0.5f; // Delay before spawning the projectile
 
-    [Header("Collider Parameters")]
-    [SerializeField] private float colliderDistance;
-    [SerializeField] private BoxCollider2D boxCollider;
+    //AnimationStates
+    Animator anim;
+    const string VENGEFUL_IDLE = "Vengeful Idle";
+    const string VENGEFUL_ATK = "Vengeful Attack";
 
-    [Header("Player Layer")]
-    [SerializeField] private LayerMask playerLayer;
-    private float cooldownTimer = Mathf.Infinity;
 
-    //References
-    private Animator anim;
-    private EnemyPatrol enemyPatrol;
-
-    private void Awake()
+    // Start is called before the first frame update
+    void Start()
     {
         anim = GetComponent<Animator>();
-        enemyPatrol = GetComponentInParent<EnemyPatrol>();
+        StartCoroutine(AttackRoutine());
+
     }
 
-    private void Update()
-    {
-        cooldownTimer += Time.deltaTime;
+    //TODO:: Fix facing direction if i have time and fuk this shit im tired
 
-        //Attack only when player in sight?
-        if (PlayerInSight())
+    // Coroutine to handle attacking
+    IEnumerator AttackRoutine()
+    {
+        while (true)
         {
-            if (cooldownTimer >= attackCooldown)
+            yield return new WaitForSeconds(attackInterval);
+
+            anim.SetTrigger("attack");
+            yield return new WaitForSeconds(projectileDelay);
+            shootingmode();
+            yield return new WaitForSeconds(GetAnimationLength("Possessive Attack") - projectileDelay);
+            anim.Play("Possessive Idle");
+        }
+    }
+
+    void shootingmode()
+    {
+        // Instantiate and shoot the projectile
+        Instantiate(vengefulProjectile, projectilePos.position, Quaternion.identity);
+    }
+
+
+
+    float GetAnimationLength(string stateName)
+    {
+        AnimationClip[] clips = anim.runtimeAnimatorController.animationClips;
+        foreach (AnimationClip clip in clips)
+        {
+            if (clip.name == stateName)
             {
-                cooldownTimer = 0;
-                anim.SetTrigger("attack");
+                return clip.length;
             }
         }
-
-        if (enemyPatrol != null)
-            enemyPatrol.enabled = !PlayerInSight();
-    }
-
-    private void RangedAttack()
-    {
-        cooldownTimer = 0;
-        fireballs[FindFireball()].transform.position = firepoint.position;
-        fireballs[FindFireball()].GetComponent<PossessiveProjectile>().ActivateProjectile();
-    }
-
-    private int FindFireball()
-    {
-        for (int i = 0; i < fireballs.Length; i++)
-        {
-            if (!fireballs[i].activeInHierarchy)
-                return i;
-        }
-        return 0;
-    }
-
-    private bool PlayerInSight()
-    {
-        RaycastHit2D hit =
-            Physics2D.BoxCast(boxCollider.bounds.center + transform.right * range * transform.localScale.x * colliderDistance,
-            new Vector3(boxCollider.bounds.size.x * range, boxCollider.bounds.size.y, boxCollider.bounds.size.z),
-            0, Vector2.left, 0, playerLayer);
-
-        return hit.collider != null;
-    }
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireCube(boxCollider.bounds.center + transform.right * range * transform.localScale.x * colliderDistance,
-            new Vector3(boxCollider.bounds.size.x * range, boxCollider.bounds.size.y, boxCollider.bounds.size.z));
+        return 0f;
     }
 }
+

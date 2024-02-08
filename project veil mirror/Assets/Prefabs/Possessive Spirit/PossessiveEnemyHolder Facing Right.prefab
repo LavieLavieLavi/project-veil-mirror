@@ -79,6 +79,9 @@ GameObject:
   - component: {fileID: 6192452548658166696}
   - component: {fileID: 4045386752960822318}
   - component: {fileID: 5800434066703622033}
+  - component: {fileID: 8975569115932019386}
+  - component: {fileID: 7074985948940712610}
+  - component: {fileID: 3513148668126054124}
   m_Layer: 0
   m_Name: Possessive Spirit
   m_TagString: PossessiveEnemy
@@ -259,11 +262,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b76b250426b9c414e9bd2c3739eface7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
   startingHealth: 100
   iFramesDuration: 2
   numberOfFlashes: 0
   components:
-  - {fileID: 0}
+  - {fileID: 5800434066703622033}
 --- !u!114 &5800434066703622033
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -296,6 +302,75 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 256
+--- !u!114 &8975569115932019386
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3853245736212156855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clientStarted: 0
+  sceneId: 0
+  _assetId: 285774515
+  serverOnly: 0
+  visible: 0
+  hasSpawned: 0
+--- !u!114 &7074985948940712610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3853245736212156855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ff3ba0becae47b8b9381191598957c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
+  target: {fileID: 487679439626677075}
+  syncPosition: 1
+  syncRotation: 1
+  syncScale: 0
+  interpolatePosition: 1
+  interpolateRotation: 1
+  interpolateScale: 1
+  coordinateSpace: 0
+  sendIntervalMultiplier: 1
+  timelineOffset: 0
+  showGizmos: 0
+  showOverlay: 0
+  overlayColor: {r: 0, g: 0, b: 0, a: 0.5}
+  onlySyncOnChange: 1
+  onlySyncOnChangeCorrectionMultiplier: 2
+  rotationSensitivity: 0.01
+  compressRotation: 0
+  positionPrecision: 0.01
+  scalePrecision: 0.01
+--- !u!114 &3513148668126054124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3853245736212156855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f6f3bf89aa97405989c802ba270f815, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
+  clientAuthority: 0
+  animator: {fileID: 6192452548658166696}
 --- !u!1 &7188531485863417463
 GameObject:
   m_ObjectHideFlags: 0
@@ -359,6 +434,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7056672244459665499}
     m_Modifications:
+    - target: {fileID: 27639675870806065, guid: df4a1b3f2b902184cafbd913ed6ea9bd, type: 3}
+      propertyPath: _assetId
+      value: 285774515
+      objectReference: {fileID: 0}
     - target: {fileID: 1813651039147567492, guid: df4a1b3f2b902184cafbd913ed6ea9bd, type: 3}
       propertyPath: m_Name
       value: PossessiveProjectile (1)
@@ -407,6 +486,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9114847240697682735, guid: df4a1b3f2b902184cafbd913ed6ea9bd, type: 3}
+      propertyPath: _assetId
+      value: 285774515
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -430,6 +513,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7056672244459665499}
     m_Modifications:
+    - target: {fileID: 27639675870806065, guid: df4a1b3f2b902184cafbd913ed6ea9bd, type: 3}
+      propertyPath: _assetId
+      value: 285774515
+      objectReference: {fileID: 0}
     - target: {fileID: 1813651039147567492, guid: df4a1b3f2b902184cafbd913ed6ea9bd, type: 3}
       propertyPath: m_Name
       value: PossessiveProjectile (9)
@@ -478,6 +565,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9114847240697682735, guid: df4a1b3f2b902184cafbd913ed6ea9bd, type: 3}
+      propertyPath: _assetId
+      value: 285774515
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -501,6 +592,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7056672244459665499}
     m_Modifications:
+    - target: {fileID: 27639675870806065, guid: df4a1b3f2b902184cafbd913ed6ea9bd, type: 3}
+      propertyPath: _assetId
+      value: 285774515
+      objectReference: {fileID: 0}
     - target: {fileID: 1813651039147567492, guid: df4a1b3f2b902184cafbd913ed6ea9bd, type: 3}
       propertyPath: m_Name
       value: PossessiveProjectile (8)
@@ -549,6 +644,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9114847240697682735, guid: df4a1b3f2b902184cafbd913ed6ea9bd, type: 3}
+      propertyPath: _assetId
+      value: 285774515
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -572,6 +671,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7056672244459665499}
     m_Modifications:
+    - target: {fileID: 27639675870806065, guid: df4a1b3f2b902184cafbd913ed6ea9bd, type: 3}
+      propertyPath: _assetId
+      value: 285774515
+      objectReference: {fileID: 0}
     - target: {fileID: 1813651039147567492, guid: df4a1b3f2b902184cafbd913ed6ea9bd, type: 3}
       propertyPath: m_Name
       value: PossessiveProjectile (4)
@@ -620,6 +723,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9114847240697682735, guid: df4a1b3f2b902184cafbd913ed6ea9bd, type: 3}
+      propertyPath: _assetId
+      value: 285774515
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -643,6 +750,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7056672244459665499}
     m_Modifications:
+    - target: {fileID: 27639675870806065, guid: df4a1b3f2b902184cafbd913ed6ea9bd, type: 3}
+      propertyPath: _assetId
+      value: 285774515
+      objectReference: {fileID: 0}
     - target: {fileID: 1813651039147567492, guid: df4a1b3f2b902184cafbd913ed6ea9bd, type: 3}
       propertyPath: m_Name
       value: PossessiveProjectile (2)
@@ -691,6 +802,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9114847240697682735, guid: df4a1b3f2b902184cafbd913ed6ea9bd, type: 3}
+      propertyPath: _assetId
+      value: 285774515
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -714,6 +829,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7056672244459665499}
     m_Modifications:
+    - target: {fileID: 27639675870806065, guid: df4a1b3f2b902184cafbd913ed6ea9bd, type: 3}
+      propertyPath: _assetId
+      value: 285774515
+      objectReference: {fileID: 0}
     - target: {fileID: 1488787124192201174, guid: df4a1b3f2b902184cafbd913ed6ea9bd, type: 3}
       propertyPath: m_IsTrigger
       value: 1
@@ -766,6 +885,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9114847240697682735, guid: df4a1b3f2b902184cafbd913ed6ea9bd, type: 3}
+      propertyPath: _assetId
+      value: 285774515
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -789,6 +912,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7056672244459665499}
     m_Modifications:
+    - target: {fileID: 27639675870806065, guid: df4a1b3f2b902184cafbd913ed6ea9bd, type: 3}
+      propertyPath: _assetId
+      value: 285774515
+      objectReference: {fileID: 0}
     - target: {fileID: 1813651039147567492, guid: df4a1b3f2b902184cafbd913ed6ea9bd, type: 3}
       propertyPath: m_Name
       value: PossessiveProjectile (6)
@@ -837,6 +964,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9114847240697682735, guid: df4a1b3f2b902184cafbd913ed6ea9bd, type: 3}
+      propertyPath: _assetId
+      value: 285774515
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -860,6 +991,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7056672244459665499}
     m_Modifications:
+    - target: {fileID: 27639675870806065, guid: df4a1b3f2b902184cafbd913ed6ea9bd, type: 3}
+      propertyPath: _assetId
+      value: 285774515
+      objectReference: {fileID: 0}
     - target: {fileID: 1813651039147567492, guid: df4a1b3f2b902184cafbd913ed6ea9bd, type: 3}
       propertyPath: m_Name
       value: PossessiveProjectile (7)
@@ -908,6 +1043,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9114847240697682735, guid: df4a1b3f2b902184cafbd913ed6ea9bd, type: 3}
+      propertyPath: _assetId
+      value: 285774515
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -931,6 +1070,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7056672244459665499}
     m_Modifications:
+    - target: {fileID: 27639675870806065, guid: df4a1b3f2b902184cafbd913ed6ea9bd, type: 3}
+      propertyPath: _assetId
+      value: 285774515
+      objectReference: {fileID: 0}
     - target: {fileID: 1813651039147567492, guid: df4a1b3f2b902184cafbd913ed6ea9bd, type: 3}
       propertyPath: m_Name
       value: PossessiveProjectile (3)
@@ -979,6 +1122,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9114847240697682735, guid: df4a1b3f2b902184cafbd913ed6ea9bd, type: 3}
+      propertyPath: _assetId
+      value: 285774515
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1002,6 +1149,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7056672244459665499}
     m_Modifications:
+    - target: {fileID: 27639675870806065, guid: df4a1b3f2b902184cafbd913ed6ea9bd, type: 3}
+      propertyPath: _assetId
+      value: 285774515
+      objectReference: {fileID: 0}
     - target: {fileID: 1813651039147567492, guid: df4a1b3f2b902184cafbd913ed6ea9bd, type: 3}
       propertyPath: m_Name
       value: PossessiveProjectile (5)
@@ -1049,6 +1200,10 @@ PrefabInstance:
     - target: {fileID: 4374185039681220556, guid: df4a1b3f2b902184cafbd913ed6ea9bd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9114847240697682735, guid: df4a1b3f2b902184cafbd913ed6ea9bd, type: 3}
+      propertyPath: _assetId
+      value: 285774515
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

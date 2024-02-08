@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: 6479006048750670510}
   m_Layer: 0
   m_Name: Projectile
-  m_TagString: Untagged
+  m_TagString: HarperProjectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -186,7 +186,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a2127048572ba049b6e8f607c6135f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectileSpeed: 10
+  projectileSpeed: 15
   projectileDamage: 25
   rb: {fileID: 5853077805881667125}
   impactEffect: {fileID: 670927358430499558, guid: 037838d94ab85a148849101d45dfda7d, type: 3}

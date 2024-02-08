@@ -4,56 +4,45 @@ using UnityEngine;
 
 public class MalevolentProjectile : MonoBehaviour
 {
-    [SerializeField] private float speed;
-    [SerializeField] private float resetTime;
-    private float lifetime;
-    private Animator anim;
-    private BoxCollider2D coll;
+    private GameObject player;
+    private Rigidbody2D rb;
+    public float speedForce;
 
-    private bool hit;
+    public GameObject vengeimpactEffect;
 
-    public GameObject posImpactEffect;
 
-    private void Awake()
+    // Start is called before the first frame update
+    void Start()
     {
-        anim = GetComponent<Animator>();
-        coll = GetComponent<BoxCollider2D>();
+        player = GameObject.FindGameObjectWithTag("Player");
+        rb = GetComponent<Rigidbody2D>();
+
+        Vector3 direction = player.transform.position - transform.position; // get the distance between two points
+        rb.velocity = new Vector2(direction.x, direction.y).normalized * speedForce;
+        //normalize the  distance
+        float rotation = Mathf.Atan2(-direction.y, -direction.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0, 0, rotation);
+
+
     }
 
-    public void ActivateProjectile()
-    {
-        hit = false;
-        lifetime = 0;
-        gameObject.SetActive(true);
-        coll.enabled = true;
-    }
-    private void Update()
-    {
-        if (hit) return;
-        float movementSpeed = speed * Time.deltaTime;
-        transform.Translate(movementSpeed, 0, 0);
-
-        lifetime += Time.deltaTime;
-        if (lifetime > resetTime)
-            gameObject.SetActive(false);
-    }
-
+    //Player taking damage
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
         {
-            collision.gameObject.GetComponent<HarperHealth>().harperHurt(25);
-            GameObject cloneimpact = Instantiate(posImpactEffect, transform.position, transform.rotation);
+            collision.gameObject.GetComponent<HarperHealth>().harperHurt(50);
+            GameObject cloneimpact = Instantiate(vengeimpactEffect, transform.position, transform.rotation);
+            Destroy(gameObject);
             Destroy(cloneimpact, .5f);
-            Deactivate();
         }
 
+        if (collision.gameObject.tag == "HarperProjectile")
+        {
+            GameObject cloneimpact = Instantiate(vengeimpactEffect, transform.position, transform.rotation);
+            Destroy(gameObject);
+            Destroy(cloneimpact, .5f);
+        }
 
-    }
-
-
-    private void Deactivate()
-    {
-        gameObject.SetActive(false);
     }
 }

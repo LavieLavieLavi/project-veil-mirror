@@ -104,10 +104,10 @@ public class MovementPrototyping : NetworkBehaviour
         if (!isHurt && Input.GetMouseButtonDown(0))
         {
             isAttacking = true;
-            if (attackRate > 1)
+            if (attackRate > 0.5)
             {
                 attackRate = 0;
-                //ChangeAnimationState(HARPER_ATK);
+                ChangeAnimationState(HARPER_ATK);
                 CmdShoot();
             }
         }
@@ -131,15 +131,13 @@ public class MovementPrototyping : NetworkBehaviour
         GameObject projectile = Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
         NetworkServer.Spawn(projectile);
         RpcPlayShootAnimation();
-        StartCoroutine(SetAttackingFalseDelayed());
-        isAttacking = false;
     }
 
     [ClientRpc]
     void RpcPlayShootAnimation()
     {
         ChangeAnimationState(HARPER_ATK);
-        isAttacking = false;
+        StartCoroutine(SetAttackingFalseDelayed());
     }
 
     IEnumerator SetAttackingFalseDelayed()
@@ -147,6 +145,24 @@ public class MovementPrototyping : NetworkBehaviour
         yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length);
         isAttacking = false;
     }
+
+    //Hurt functions
+    public void SetHurt()
+    {
+        isHurt = true;
+        ChangeAnimationState(HARPER_HURT);
+        // After some time, set isHurt back to false
+        StartCoroutine(EndHurtAnimation());
+    }
+
+    // Coroutine to end the hurt animation after a delay
+    IEnumerator EndHurtAnimation()
+    {
+        yield return new WaitForSeconds(.3f);
+        isHurt = false;
+    }
+
+
 
     void ChangeAnimationState(string newState)
     {
